@@ -1,18 +1,21 @@
 from flask import Flask
-import os
 import subprocess
+import os
 
 app = Flask(__name__)
 
 @app.route('/')
 def run_simulation():
     try:
-        # Using subprocess for better control over execution
-        output = subprocess.check_output(["python", "simulation.py"], stderr=subprocess.STDOUT, text=True)
-        return f"✅ Simulation executed successfully.\n\nOutput:\n{output}"
+        output = subprocess.check_output(
+            ["python", "simulation.py"], stderr=subprocess.STDOUT, text=True
+        )
+        return f"<pre>✅ Simulation executed:\n\n{output}</pre>"
     except subprocess.CalledProcessError as e:
-        return f"❌ Simulation failed.\n\nError:\n{e.output}", 500
+        return f"<pre>❌ Simulation failed:\n\n{e.output}</pre>", 500
+    except Exception as ex:
+        return f"<pre>🔥 Unexpected error:\n{str(ex)}</pre>", 500
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 10000))  # Render uses this PORT environment variable
+    port = int(os.environ.get("PORT", 10000))
     app.run(host='0.0.0.0', port=port)
