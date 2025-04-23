@@ -1,0 +1,35 @@
+# YOLOv5 🚀 by Ultralytics, GPL-3.0 license
+# COCO128 dataset https://www.kaggle.com/ultralytics/coco128 (first 128 images from COCO train2017) by Ultralytics
+# Example usage: python train.py --data coco128.yaml
+# parent
+# ├── yolov5
+# └── datasets
+#     └── coco128  ← downloads here (7 MB)
+
+names:
+- ambulance
+- army vehicle
+- auto rickshaw
+- bicycle
+- bus
+- car
+- garbagevan
+- human hauler
+- minibus
+- minivan
+- motorbike
+- pickup
+- policecar
+- rickshaw
+- scooter
+- suv
+- taxi
+- three wheelers (CNG)
+- truck
+- van
+- wheelbarrow
+
+nc: 21
+
+train: /content/dataset/images/train/
+val: /content/dataset/images/val/
